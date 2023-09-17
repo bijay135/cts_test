@@ -4,7 +4,7 @@
 
 # Sample laravel app
 - Clone this repository and cd into it
-- Run the `./initialize.sh` script to do the folling tasks automatically
+- Run the `./initialize-laravel.sh` script to do the folling tasks automatically
 
 ```
 - Create folders in host and configure proper permissions
@@ -17,15 +17,19 @@
 
 # Sample vue.js app
 - Clone this repository and cd into it
-- Run these commands to create a project and run it
+- Run these commands to initialize a fresh project
 ```
 mkdir -p vuejs
 docker run --rm -v "./vuejs:/app" -w "/app" -it node:20.6-alpine sh -c "npm install -g @vue/cli && vue create ."
-
+```
+- During installation prompts set values as below:
+```
 Generate project in current directory -> Y
 Please pick a oreset -> Default ([Vue 3] babel, eslint)
 Pick the package manager to use when installing dependencies -> Use Npn
-
+```
+- After project is ready, build image and run it
+```
 docker build -t cts_test:vuejs . -f vuejs.dockerfile
 docker run -it -p 8081:80 --rm --name vuejs-app cts_test:vuejs
 ```
