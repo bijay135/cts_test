@@ -31,7 +31,7 @@ Pick the package manager to use when installing dependencies -> Use Npn
 - After project is ready, build image and run it
 ```
 docker build -t cts_test:vuejs . -f vuejs.dockerfile
-docker run -it -p 8081:80 --rm --name vuejs-app cts_test:vuejs
+docker run -d -it -p 8081:80 --rm --name vuejs-app cts_test:vuejs
 ```
 - Once it's complete app should be browsable at `http://localhost:8081`
 - Make further changes as necessary
