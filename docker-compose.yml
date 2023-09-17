@@ -6,9 +6,9 @@ services:
           user: $HOST_USER
           uid: 1000
         context: .
-        dockerfile: Dockerfile
+        dockerfile: laravel.dockerfile
       image: cts_test/laravel
-      container_name: app
+      container_name: laravel-app
       restart: unless-stopped
       tty: true
       environment:
@@ -17,7 +17,7 @@ services:
       working_dir: /var/www/html/laravel
       volumes:
           - /home/$HOST_USER/html/laravel:/var/www/html/laravel
-          - /php/local.ini:/usr/local/etc/php/conf.d/local.ini
+          - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
 
     nginx:
       image: nginx:1.24.0

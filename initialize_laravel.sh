@@ -4,7 +4,7 @@ set -euo pipefail
 # Variables
 LARAVEL_HOME="/home/$USER/html/laravel"
 
-echo "Running initialize script"
+echo "Running initialize laravel script"
 
 # Create folders in host and configure proper permissions
 echo -e "\nCreating folders in host and configure permissions"
@@ -41,5 +41,5 @@ docker-compose exec app composer install
 echo -e "Generating fresh app encryption key"
 docker-compose exec app php artisan key:generate
 
-echo -e "\nInitialize script complete"
+echo -e "\nLaravel initialize script complete"
 echo -e "\nApp should be browsable at http://localhost:8080"

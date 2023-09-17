@@ -1,6 +1,6 @@
 FROM php:8.1-fpm
 
-# Arguments defined in docker-compose.yml
+# Arguments from docker-compose.yml
 ARG user
 ARG uid
 
@@ -17,10 +17,8 @@ RUN apt-get update && apt-get install -y \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
+# Install PHP extensions and Composer
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
-
-# Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Create system user to run composer and artisan commands
